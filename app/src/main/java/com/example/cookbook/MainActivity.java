@@ -1,17 +1,17 @@
 package com.example.cookbook;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
-import android.widget.Button;
+import android.view.View.OnKeyListener;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 public class MainActivity extends AppCompatActivity {
     EditText inputText;
-    Button search;
-    TextView textView;
+
 
 
     @Override
@@ -19,12 +19,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         inputText = (EditText) findViewById(R.id.SearchText);
-        search = (Button) findViewById(R.id.button);
-        textView = (TextView) findViewById(R.id.textView2);
-        search.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                textView.setText(inputText.getText());
+        inputText.setOnKeyListener(new OnKeyListener(){
+            public boolean onKey(View view, int keyCode, KeyEvent keyevent){
+                if((keyevent.getAction() == keyevent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)){
+                    //set code for chatGPT api
+                    return true;
+                }
+                return false;
             }
         });
     }

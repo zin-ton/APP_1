@@ -2,4 +2,6 @@
     <string name="app_name">cookbook</string>
     <string name="Seacrch_Bar_Hint">Введите название рецепта</string>
     <string name="Button_Hint">поиск</string>
+    <string name="Receipt">рецепт</string>
+    <string name="to_buy">список покупок</string>
 </resources>
