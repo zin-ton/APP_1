@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">cookbook</string>
+    <string name="Seacrch_Bar_Hint">Введите название рецепта</string>
 </resources>
