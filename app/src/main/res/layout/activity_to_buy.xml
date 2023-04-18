@@ -5,14 +5,28 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg_color"
-    tools:context=".to_buy_activity">
+    tools:context=".to_buy_activity" >
 
-
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:text="Button"
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="203dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="4dp"
+        android:text="@string/to_buy"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.548"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/checkBoxes"
+        android:layout_width="407dp"
+        android:layout_height="583dp"
+        android:layout_marginTop="8dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"></LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
