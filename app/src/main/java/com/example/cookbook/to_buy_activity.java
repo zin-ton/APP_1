@@ -27,8 +27,9 @@ public class to_buy_activity extends AppCompatActivity {
         LinearLayout linearLayout = findViewById(R.id.checkBoxes); // получаем ссылку на макет
         String nextLine[];
         try {
-            File csvfile = new File(Environment.getExternalStorageDirectory() + "/reciepies.csv");
-            CSVReader reader = new CSVReader(new FileReader(csvfile.getAbsolutePath()));
+            String csvfileString = this.getApplicationInfo().dataDir + File.separatorChar + "csvfile.csv";
+            File csvfile = new File(csvfileString);
+            CSVReader reader = new CSVReader(new FileReader("csvfile.getAbsolutePath()"));
             for (int i = 0; i < 5; i++) {
                 nextLine = reader.readNext();
                 CheckBox checkBox = new CheckBox(this); // создаем новый флажок
