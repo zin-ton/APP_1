@@ -1,16 +1,26 @@
 package com.example.cookbook;
 
 import android.content.Intent;
+import android.content.res.AssetManager;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnKeyListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.opencsv.CSVParser;
+import com.opencsv.CSVParserBuilder;
 import com.opencsv.CSVReader;
+import com.opencsv.CSVReaderBuilder;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -21,10 +31,30 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-       inputText = (EditText) findViewById(R.id.SearchText);
-       inputText.setHint("Введите название рецепта");
+        LinearLayout linearLayout = (LinearLayout) findViewById(R.id.find);
         Button to_buy = (Button) findViewById(R.id.shopListButton);
         Button receipt = (Button) findViewById(R.id.receiptButton);
+        AssetManager assetManager = getAssets();
+        InputStream inputStream;
+        try {
+            inputStream = assetManager.open("csvfile.csv");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        CSVParser csvParser = new CSVParserBuilder()
+                .withSeparator(',')
+                .withIgnoreQuotations(true)
+                .build();
+        InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
+        CSVReader csvReader = new CSVReaderBuilder(inputStreamReader)
+                .withSkipLines(1)
+                .withCSVParser(csvParser)
+                .build();
+        String[] nextLine;
+        while((nextLine = csvReader.readNext()) != null){
+
+        }
+
         inputText.setOnKeyListener(new OnKeyListener(){
            public boolean onKey(View view, int keyCode, KeyEvent keyevent){
                 if((keyevent.getAction() == keyevent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)){
